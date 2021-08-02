@@ -1,0 +1,109 @@
+[
+    {
+        "id": "ca987fbf2df779e7",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "15f3f343fbb3d546",
+        "type": "inject",
+        "z": "ca987fbf2df779e7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 140,
+        "wires": [
+            [
+                "3900b4d1253b9cf5"
+            ]
+        ]
+    },
+    {
+        "id": "3900b4d1253b9cf5",
+        "type": "function",
+        "z": "ca987fbf2df779e7",
+        "name": "convertData-function",
+        "func": "  \nvar date = new Date(msg.payload);\n// Cambia el payload para que sea una fecha con formato\nmsg.payload = date.toString();\n// Regresa el mensaje para que se envíe al sigueinte nodo\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 180,
+        "wires": [
+            [
+                "4c8c07ba417f9a76",
+                "0dc768223ea57e0e"
+            ]
+        ]
+    },
+    {
+        "id": "4c8c07ba417f9a76",
+        "type": "debug",
+        "z": "ca987fbf2df779e7",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "0dc768223ea57e0e",
+        "type": "ui_text",
+        "z": "ca987fbf2df779e7",
+        "group": "53a08266736d6832",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Fecha",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 510,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "53a08266736d6832",
+        "type": "ui_group",
+        "name": "Fecha - Group",
+        "tab": "f94741e663ccd3dc",
+        "order": 1,
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "f94741e663ccd3dc",
+        "type": "ui_tab",
+        "name": "flow 2 Tab ",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
